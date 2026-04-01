@@ -1,0 +1,576 @@
+:root {
+  --bg: #f3eadf;
+  --bg-deep: #e3d1bc;
+  --surface: rgba(92, 45, 24, 0.08);
+  --surface-strong: rgba(70, 34, 18, 0.12);
+  --text: #24150f;
+  --muted: #6d5547;
+  --accent: #8f3d22;
+  --accent-strong: #6f2611;
+  --border: rgba(43, 22, 14, 0.14);
+  --shadow: 0 24px 70px rgba(67, 34, 19, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Serif SC", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 251, 245, 0.9), transparent 30%),
+    radial-gradient(circle at right 20%, rgba(143, 61, 34, 0.18), transparent 28%),
+    linear-gradient(135deg, #f7efe6 0%, var(--bg) 40%, var(--bg-deep) 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.26), transparent 85%);
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-bottom: 64px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 20px;
+}
+
+.brand-mark {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255, 252, 247, 0.6);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.18em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.hero,
+.manifesto,
+.belief,
+.about,
+.experience,
+.contact,
+.join {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  background: rgba(255, 249, 242, 0.58);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 28px;
+  padding: 72px;
+  min-height: 70vh;
+  align-items: end;
+}
+
+.hero::after,
+.join::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(143, 61, 34, 0.18), transparent 70%);
+  filter: blur(10px);
+}
+
+.hero::after {
+  top: -120px;
+  right: -80px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+.panel-quote,
+.belief-statement {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3.2rem, 8vw, 5.8rem);
+  line-height: 1.02;
+  font-weight: 600;
+}
+
+.hero-lead {
+  margin: 28px 0 18px;
+  max-width: 18em;
+  font-size: clamp(1.18rem, 2vw, 1.72rem);
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.hero-text,
+.join-copy p,
+.card p,
+.belief-item p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.metric {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 252, 247, 0.6);
+  border: 1px solid var(--border);
+}
+
+.metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.metric strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #fff9f5;
+}
+
+.button-primary:hover {
+  background: var(--accent-strong);
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.button-full {
+  width: 100%;
+}
+
+.hero-panel,
+.join-card,
+.card,
+.belief-item {
+  background: var(--surface);
+  border: 1px solid rgba(43, 22, 14, 0.09);
+}
+
+.hero-panel {
+  padding: 30px 28px 24px;
+  border-radius: 24px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.portrait-frame {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.9), rgba(236, 214, 191, 0.36));
+  border: 1px solid rgba(43, 22, 14, 0.08);
+  box-shadow: 0 16px 40px rgba(67, 34, 19, 0.12);
+}
+
+.hero-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  display: block;
+  transform: scale(1.34);
+  transform-origin: center 18%;
+}
+
+.panel-content {
+  width: 100%;
+  padding: 0 8px 4px;
+  text-align: center;
+}
+
+.panel-label,
+.join-label {
+  margin: 0 0 16px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.panel-quote {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.manifesto,
+.belief,
+.about,
+.experience,
+.contact,
+.join {
+  margin-top: 24px;
+  padding: 56px;
+}
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  border-radius: 24px;
+  padding: 28px;
+}
+
+.card h3 {
+  margin: 0 0 16px;
+  font-size: 1.8rem;
+}
+
+.belief-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.belief-statement {
+  margin: 0;
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 248, 240, 0.72), rgba(255, 241, 229, 0.42));
+  border: 1px solid var(--border);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.belief-list {
+  display: grid;
+  gap: 16px;
+}
+
+.belief-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 20px;
+  padding: 22px 24px;
+  border-radius: 22px;
+}
+
+.belief-item span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.belief-item p {
+  margin: 0;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.about-intro {
+  margin: 0;
+  padding: 30px;
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(255, 250, 244, 0.9), rgba(236, 214, 191, 0.55));
+  border: 1px solid var(--border);
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.about-intro p {
+  margin: 0;
+}
+
+.about-intro p + p {
+  margin-top: 0.18em;
+}
+
+.about-details {
+  display: grid;
+  gap: 16px;
+}
+
+.detail-card,
+.contact-card {
+  padding: 24px 26px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid rgba(43, 22, 14, 0.09);
+}
+
+.detail-label {
+  margin: 0 0 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+}
+
+.detail-card p:last-child,
+.contact-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.feature-card {
+  min-height: 220px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.76), rgba(236, 214, 191, 0.34)),
+    var(--surface);
+}
+
+.join {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+.join::after {
+  right: -130px;
+  bottom: -180px;
+}
+
+.join-card {
+  border-radius: 28px;
+  padding: 28px;
+}
+
+.join-points {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.join-points p {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 252, 247, 0.48);
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.qr-image {
+  display: block;
+  width: min(100%, 360px);
+  margin: 0 auto 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.join-note {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-card .button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 920px) {
+  .page-shell {
+    width: min(100% - 24px, 100%);
+  }
+
+  .site-header,
+  .hero,
+  .manifesto,
+  .belief,
+  .join {
+    padding: 24px;
+  }
+
+  .hero,
+  .belief-layout,
+  .about-layout,
+  .experience-grid,
+  .join {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-quote {
+    font-size: 1.9rem;
+  }
+
+  .hero-portrait {
+    transform: scale(1.62);
+  }
+
+  .portrait-frame {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    gap: 16px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-nav {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .hero-lead {
+    font-size: 1.08rem;
+    max-width: none;
+  }
+
+  .belief-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .portrait-frame {
+    width: 220px;
+    height: 220px;
+  }
+}
