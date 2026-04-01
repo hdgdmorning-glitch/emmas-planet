@@ -519,6 +519,20 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .hero-copy,
+  .hero-panel,
+  .about-layout > *,
+  .belief-layout > *,
+  .join > *,
+  .contact-card,
+  .card,
+  .detail-card,
+  .belief-item,
+  .join-card {
+    min-width: 0;
+    width: 100%;
+  }
+
   .manifesto-grid {
     grid-template-columns: 1fr;
   }
@@ -593,6 +607,17 @@ h2 {
     border-radius: 24px;
   }
 
+  .hero,
+  .manifesto-grid,
+  .belief-layout,
+  .about-layout,
+  .about-details,
+  .experience-grid,
+  .join,
+  .belief-list {
+    gap: 12px;
+  }
+
   .section-heading {
     margin-bottom: 18px;
   }
@@ -622,10 +647,13 @@ h2 {
   .join-note,
   .join-points p,
   .about-intro,
+  .about-intro p,
   .belief-statement,
+  .belief-statement p,
   .panel-quote {
     word-break: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
 
   .portrait-frame {
@@ -646,11 +674,7 @@ h2 {
   }
 
   .hero-actions,
-  .hero-metrics,
-  .about-details,
-  .belief-list,
-  .experience-grid,
-  .manifesto-grid {
+  .hero-metrics {
     gap: 12px;
   }
 
@@ -683,6 +707,11 @@ h2 {
 
   .join-points p {
     padding: 12px 14px;
+  }
+
+  .qr-image {
+    width: min(100%, 280px);
+    margin-bottom: 12px;
   }
 
   .contact-card {
